@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<div lang="en">
+<head>
+  <title>Bootstrap Example</title>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <style>
+  body {
+    font: 15px Montserrat, sans-serif;
+    line-height: 1.8;
+    color:#000000;
+  }
+  p {font-size: 16px;}
+  .margin {margin-bottom: 27px;}
+  .bg-1 {
+    background-color: #000000; /* Green */
+    color: #ffffff;
+  }
+  .bg-2 {
+    background-color: #474e5d; /* Dark Blue */
+    color: #ffffff;
+  }
+  .bg-3 {
+    background-color: #ffffff; /* White */
+    color: #555555;
+  }
+  .bg-4 {
+    background-color: #2f2f2f; /* Black Gray */
+    color: #fff;
+  }
+  .container-fluid {
+    padding-top: 02px;
+    padding-bottom: 20px;
+  }
+  .navbar {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    border: 0;
+    border-radius: 0;
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 5px;
+  }
+  .navbar-nav  li a:hover {
+    color: #FF0000 !important;
+  }
+  </style>
+
+</head>
+<center style="background-color:#A9A9A9">
+
+<!-- Navbar -->
+<nav class="navbar navbar-default">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      </div>
+
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/">HOME</a></li>
+
+
+        <li><a href="prediction">PREDICTION</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+  <h3 align="center" style="color:blue">PREDICT THE OUTCOME</h3><br><br>
+
+</head>
+<div>
+
+
+
+        {% if msg=="unsuccess" %}
+         <center>
+        <div class="container">
+           <div class="alert alert-danger" class="mx-auto" style="width: 200px; height:80;" >
+             <strong>Warning!!!</strong>Submit All Parameter's Value!
+         </center>
+         </div></div>
+          {% else %}
+
+          <div class="container">
+       <form  action="/prediction" method="POST" enctype="multipart/form-data">
+      <input style="background:#FFFFCC" type="text" Name="Prev_Close" placeholder="Prev_Close">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+      <input style="background:#FFFFCC" type="text" Name="Open" placeholder="Open"><br><br>
+
+      <input style="background:#FFFFCC"  type="text" Name="High" placeholder="High">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+      <input style="background:#FFFFCC" type="text" Name="Low" placeholder="Low"><br><br>
+
+      <input style="background:#FFFFCC"  type="text" Name="Last" placeholder="Last">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+      <input style="background:#FFFFCC" type="text" Name="VWAP" placeholder="VWAP"><br><br>
+
+      <input style="background:#FFFFCC" type="text" Name="Volume" placeholder="Volume">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+      <input style="background:#FFFFCC" type="text" Name="Trades" placeholder="Trades"><br><br>
+
+      <input style="background:#FFFFCC" type="text" Name="Deliverable_Volume" placeholder="Deliverable_Volume">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+      <input style="background:#FFFFCC" type="text" Name="Percentage_Deliverble" placeholder="Percentage_Deliverble"><br><br>
+      <input type="submit" value="SUBMIT" style="color:blue">
+    </form>
+
+          {% if msg=="success" %}
+         <align="center">
+
+        <div class="container">
+         <div class="alert alert-Success" class="mx-auto" style="width: 200px; height:80;" >
+             <strong>Predicted Price: </strong>{{op}}</div></div>
+
+
+
+
+           {% endif %}
+
+           {% endif %}
+
+
+           </center>
+           </div>
+
+
+
+</div>
+
+
+
+</center>
+
+</body>
+</html>
